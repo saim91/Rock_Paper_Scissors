@@ -1,14 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rock, Paper, Scissors</title>
+    <title>Document</title>
 </head>
+
 <body>
     <script>
-        
+        function getCompChoice() {
+            let compChoice = Math.floor(Math.random() * 3);
+            if (compChoice == 0) {
+                return "rock";
+            }
+            if (compChoice == 1) {
+                return "paper";
+            }
+            if (compChoice == 2) {
+                return "scissors";
+            }
+
+            return compChoice;
+        }
+
+        function playRound(playerSelection, compSelection) {
+
+            if (playerSelection == compSelection) {
+                
+                result = `Round Tied! You choose ${playerSelection} and computer choose ${compSelection}`;
+            }
+            if (playerSelection == 'paper') {
+                if (compSelection == 'rock') {
+                    result = "You Win!";
+                }
+                else if (compSelection == 'scissors') {
+                    result = "Computer Wins!"
+                }
+            }
+            else if (playerSelection == 'rock') {
+                if (compSelection == 'paper') {
+                    result = "Computer Wins!"
+                }
+                else if (compSelection == 'scissors') {
+                    result = "You Win!";
+                }
+            }
+            else if (playerSelection == 'scissors') {
+                if (compSelection == 'paper') {
+                    result = "You Win!";
+                }
+                else if (compSelection == 'rock') {
+                    result = "Computer Wins!"
+                }
+            }
+
+            return result;
+
+
+        }
+
+        function game() {
+            let compScore = 0;
+            let yourScore = 0;
+            for (let i = 0; i < 5; i++) {
+                const youChoose = prompt("Enter your Selection: ");
+                const compChoose = getCompChoice();
+                console.log(playRound(youChoose, compChoose));
+                if (result == "Computer Wins!") {
+                    compScore++;
+                }
+                else if (result == "You Win!") {
+                    yourScore++;
+                }
+
+                
+            }
+            if (yourScore > compScore) {
+                    console.log("You Win 5 round Game!");
+                }
+                else if (yourScore < compScore) {
+                    console.log("You loose 5 round game1")
+                }
+                else {
+                    console.log("Match Tied!")
+                }
+        }
+
+        let result;
+        console.log(game());
     </script>
 </body>
+
 </html>
